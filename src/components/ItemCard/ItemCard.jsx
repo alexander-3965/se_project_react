@@ -1,6 +1,6 @@
-import "../ItemCards/ItemCards.css"
+import "../ItemCard/ItemCard.css"
 
-function ItemCards({ item, onCardClick }){
+function ItemCard({ item, onCardClick }){
 
    const handleCardClick = () => {
       onCardClick(item);
@@ -13,4 +13,4 @@ function ItemCards({ item, onCardClick }){
          </div>)
 }
 
-export default ItemCards;
+export default ItemCard;
