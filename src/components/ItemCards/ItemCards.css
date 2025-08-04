@@ -1,0 +1,26 @@
+
+.item-cards{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.item-cards__image{
+    max-width: 325px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.item-cards__name{
+    position: absolute;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #00000099;
+    margin: 0;
+    top: 15px;
+    background: rgba(255, 255, 255, 1);
+    padding: 2px 12px;
+    border-radius: 4px;
+;
+}
