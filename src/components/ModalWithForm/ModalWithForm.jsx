@@ -9,7 +9,7 @@ function ModalWithForm({children, title, buttonText, activeModal, handleCloseCli
                  <button onClick={handleCloseClick} type="button" className="modal__close-btn">
                     <img src={closeBtn} alt="close button" />
                  </button>
-            <form className="modal__form" action="sumbit">
+            <form className="modal__form" action="submit">
                 {children}
                 <button type="submit" className="modal__submit-btn">
                     {buttonText}

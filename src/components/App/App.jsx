@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import './App.css'
-import { coordinates, APIkey } from '../../utils/constants'
+import { coordinates, APIkey, defaultClothingItems } from '../../utils/constants'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
@@ -17,6 +17,7 @@ function App() {
     });
     const [activeModal, setActiveModal] = useState(" ");
     const [selectedCard, setSelectedCard] = useState({})
+    const [clothingItems, setClothingItems] = useState(defaultClothingItems)
 
     const handleCardClick = (card) => {
         setSelectedCard(card)
@@ -44,7 +45,7 @@ function App() {
         <div className="page">
             <div className="page__content">
                 <Header handleAddClick= {handleAddClick} weatherData={weatherData} />
-                <Main handleCardClick={handleCardClick} weatherData={weatherData}/>
+                <Main clothes={clothingItems} handleCardClick={handleCardClick} weatherData={weatherData}/>
                 <ModalWithForm handleCloseClick={closeActiveModal} buttonText="Add Garment" title="New Garment" activeModal={activeModal} >
                 <label htmlFor="name" className="modal__label">
                     Name{" "}
@@ -68,6 +69,7 @@ function App() {
                     <label htmlFor="hot" className="modal__label modal__label_type_radio"> 
                         <input 
                         id="hot"
+                        value="hot"
                         type="radio" 
                         name='weathertype'
                         className="modal__radio-input"
@@ -77,6 +79,7 @@ function App() {
                     <label htmlFor="cold" className="modal__label modal__label_type_radio">
                         <input 
                         id="cold"
+                        value="cold"
                         type="radio"
                         name="weathertype" 
                         className="modal__radio-input"
@@ -86,6 +89,7 @@ function App() {
                     <label htmlFor="warm" className="modal__label modal__label_type_radio">
                         <input 
                         id="warm"
+                        value="warm"
                         type="radio" 
                         name='weathertype'
                         className="modal__radio-input"
