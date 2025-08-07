@@ -1,29 +1,29 @@
-.modal__content_type_image{
-    min-block-size: fit-content;
-    padding: 0;
-    max-width: 498px;
-    border-radius: 16px;
+.modal__content_type_image {
+  min-block-size: fit-content;
+  padding: 0;
+  max-width: 498px;
+  border-radius: 16px;
 }
 
-.modal__caption{
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
+.modal__caption {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
-.modal__weather{
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
+.modal__weather {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
-.modal__image{
-    max-width: 498px;
-    max-height: 498px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+.modal__image {
+  max-width: 498px;
+  max-height: 498px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
-.modal__footer{
-    padding: 20px 0 32px 32px;
+.modal__footer {
+  padding: 20px 0 32px 32px;
 }
