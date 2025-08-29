@@ -2,15 +2,12 @@ import "./ItemModal.css";
 import closeBtn from "../../assets/close-btn-white.svg";
 
 function ItemModal({ activeModal, card, handleCloseClick, onDeleteItem }) {
-  // const
-  //watch video to see if I need an active item state
-
   function handleDelete(evt) {
     evt.preventDefault();
     onDeleteItem(card);
   }
   return (
-    <div className={`modal ${activeModal == "preview" && "modal_opened"}`}>
+    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
         <button
           onClick={handleCloseClick}

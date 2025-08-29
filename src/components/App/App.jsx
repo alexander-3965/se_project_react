@@ -44,13 +44,14 @@ function App() {
 
   const onAddItem = (inputValues) => {
     addItems(inputValues)
-      .then(() => {
+      .then((data) => {
         const newCardData = {
-          name: inputValues.name,
-          imageUrl: inputValues.imageUrl,
-          weather: inputValues.weatherType,
+          name: data.name,
+          imageUrl: data.imageUrl,
+          weather: data.weather,
+          _id: data._id,
         };
-        setClothingItems([...clothingItems, newCardData]);
+        setClothingItems([newCardData, ...clothingItems]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -111,6 +112,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
+                  clothingItems={clothingItems}
                 />
               }
             />

@@ -6,7 +6,6 @@ function ModalWithForm({
   title,
   buttonText,
   onSubmit,
-  // activeModal,
   isOpen,
   onCloseModal,
 }) {
