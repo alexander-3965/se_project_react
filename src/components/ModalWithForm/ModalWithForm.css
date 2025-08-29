@@ -66,6 +66,28 @@
   height: 16px;
 }
 
+.modal__close-btn:hover {
+  cursor: pointer;
+  background-color: #00000099;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+}
+
+.modal__delete-btn {
+  align-self: flex-start;
+  margin-right: 34px;
+  background: transparent;
+  border: none;
+  color: #ff4d00;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.modal__delete-btn:hover {
+  cursor: pointer;
+}
+
 .modal__radio-btn {
   border: none;
   padding: 0;

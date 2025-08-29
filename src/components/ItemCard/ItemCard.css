@@ -10,6 +10,10 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.item-cards__image:hover {
+  cursor: pointer;
+}
+
 .item-cards__name {
   position: absolute;
   font-weight: 700;
