@@ -43,7 +43,7 @@ function App() {
   };
 
   const onAddItem = (inputValues) => {
-    addItems(inputValues)
+    return addItems(inputValues)
       .then((data) => {
         const newCardData = {
           name: data.name,
@@ -86,6 +86,17 @@ function App() {
         setWeatherData(processedData);
       })
       .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
   return (

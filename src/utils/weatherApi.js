@@ -1,10 +1,4 @@
-const processServerRequest = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-};
+import { checkReponse } from "./api";
 
 export const processWeatherData = (data) => {
   const result = {};
@@ -20,7 +14,7 @@ export const processWeatherData = (data) => {
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  ).then(processServerRequest);
+  ).then(checkReponse);
 };
 
 const getWeatherType = (temperature) => {
