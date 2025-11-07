@@ -1,4 +1,4 @@
-import { checkReponse } from "./api";
+import { checkResponse } from "./api";
 
 export const processWeatherData = (data) => {
   const result = {};
@@ -14,7 +14,7 @@ export const processWeatherData = (data) => {
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  ).then(checkReponse);
+  ).then(checkResponse);
 };
 
 const getWeatherType = (temperature) => {

@@ -1,7 +1,38 @@
 .sidebar {
   display: flex;
+  flex-direction: column;
   max-width: 229px;
   gap: 16px;
+  align-items: flex-start;
+}
+
+.sidebar__profile {
+  display: flex;
+  gap: 16px;
+}
+
+.sidebar__edit-profile {
+  border: none;
+  font-size: 20px;
+  color: #000000;
+  font-weight: 700;
+  background-color: #f3f3f3;
+}
+
+.sidebar__edit-profile:hover {
+  text-decoration: underline;
+}
+
+.sidebar__logout {
+  border: none;
+  font-size: 20px;
+  color: #000000;
+  font-weight: 700;
+  background-color: #f3f3f3;
+}
+
+.sidebar__logout:hover {
+  text-decoration: underline;
 }
 
 .sidebar__avatar {

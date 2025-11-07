@@ -1,8 +1,22 @@
-.modal__content_type_image {
+.modal__item-container {
   min-block-size: fit-content;
+  background-color: #ffff;
+  border-radius: 20px;
+  max-width: 496px;
+  max-height: 610px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
   padding: 0;
-  max-width: 498px;
-  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal__delete-btn {
+  color: red;
+}
+
+.modal__delete-btn_hidden {
+  visibility: hidden;
 }
 
 .modal__caption {
@@ -22,9 +36,11 @@
   max-height: 498px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  display: flex;
+  justify-self: center;
 }
 
-.modal__footer {
+.modal .modal__footer {
   padding: 20px 0 32px 32px;
   display: flex;
   justify-content: space-between;

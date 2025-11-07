@@ -35,6 +35,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
           id="name"
           name="name"
           placeholder="Name"
+          required={true}
           value={values.name}
           onChange={handleChange}
         />
@@ -47,6 +48,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
           id="imageUrl"
           name="imageUrl"
           placeholder="Image URL"
+          required={true}
           value={values.imageUrl}
           onChange={handleChange}
         />

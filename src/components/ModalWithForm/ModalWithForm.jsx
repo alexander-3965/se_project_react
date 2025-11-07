@@ -5,6 +5,7 @@ function ModalWithForm({
   children,
   title,
   buttonText,
+  redirectButtonText,
   onSubmit,
   isOpen,
   onCloseModal,
@@ -22,9 +23,14 @@ function ModalWithForm({
         </button>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <button type="submit" className="modal__submit-btn">
-            {buttonText}
-          </button>
+          <div className="modal__buttons-container">
+            <button type="submit" className="modal__submit-btn">
+              {buttonText}
+            </button>
+            <button type="button" className="modal__redirect-btn">
+              {redirectButtonText}
+            </button>
+          </div>
         </form>
       </div>
     </div>

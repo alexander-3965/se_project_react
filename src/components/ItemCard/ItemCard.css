@@ -14,15 +14,28 @@
   cursor: pointer;
 }
 
-.item-cards__name {
+.item-cards__header {
   position: absolute;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-cards__name {
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
   color: #00000099;
   margin: 0;
-  top: 15px;
   background: rgba(255, 255, 255, 1);
   padding: 2px 12px;
   border-radius: 4px;
+}
+
+.item-cards__like-button {
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 15px;
 }

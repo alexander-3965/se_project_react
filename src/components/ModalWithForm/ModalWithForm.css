@@ -18,12 +18,13 @@
 .modal__content {
   background-color: #ffff;
   border-radius: 20px;
-  max-width: 436px;
-  max-height: 496px;
+  max-width: 496px;
+  max-height: 436px;
   width: 100%;
   box-sizing: border-box;
   position: relative;
   padding: 28px 28px 36px;
+  overflow: hidden;
 }
 
 .modal__form {
@@ -84,6 +85,10 @@
   line-height: 24px;
 }
 
+.modal__delete-btn_hidden {
+  display: none;
+}
+
 .modal__delete-btn:hover {
   cursor: pointer;
 }
@@ -107,6 +112,19 @@
 
 .modal__submit-btn:hover {
   background: #00000099;
+}
+
+.modal__redirect-btn {
+  margin: 32px 0 0;
+  padding: 8px 16px;
+  background: transparent;
+  color: #00000080;
+  border-radius: 4px;
+  border: none;
+}
+
+.modal__redirect-btn:hover {
+  color: #000000;
 }
 
 .modal__legend {
