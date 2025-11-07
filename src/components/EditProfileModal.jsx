@@ -12,6 +12,8 @@ const EditProfileModal = ({ isOpen, onEditProfile, onCloseModal }) => {
 
   const { setValues, values, handleChange } = useForm(defaultValues);
 
+  if (isOpen) setValues({ name: currentUser.name, avatar: currentUser.avatar });
+
   function handleSubmit(evt) {
     evt.preventDefault();
     onEditProfile(values)

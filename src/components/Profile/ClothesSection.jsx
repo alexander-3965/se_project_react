@@ -3,7 +3,13 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ClothesSection({ onCardClick, onAddClick, clothes, onCardLike }) {
+function ClothesSection({
+  onCardClick,
+  onAddClick,
+  clothes,
+  onCardLike,
+  isLoggedIn,
+}) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = (item) => item.owner === currentUser._id;
   return (
@@ -20,6 +26,7 @@ function ClothesSection({ onCardClick, onAddClick, clothes, onCardLike }) {
           .filter((item) => isOwn(item))
           .map((item) => (
             <ItemCard
+              isLoggedIn={isLoggedIn}
               onCardClick={onCardClick}
               key={item._id}
               item={item}

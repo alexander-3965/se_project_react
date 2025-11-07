@@ -4,7 +4,7 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
 import {
   coordinates,
-  APIkey,
+  apiKey,
   defaultClothingItems,
 } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -48,7 +48,7 @@ function App() {
     name: "",
     avatar: "",
   });
-  const [isloggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -92,7 +92,6 @@ function App() {
     const token = getToken();
     return addItems(inputValues, token)
       .then(({ data }) => {
-        console.log("Item added successfully:", data);
         const newCardData = {
           name: data.name,
           imageUrl: data.imageUrl,
@@ -109,9 +108,18 @@ function App() {
   const onRegister = (user) => {
     return signUp(user)
       .then((data) => {
-        console.log("User Registered successfully:");
-        console.log(data);
+        return signIn({ email: user.email, password: user.password });
+      })
+      .then((loginData) => {
+        localStorage.setItem("jwt", loginData.token);
+        setIsLoggedIn(true);
+
+        return getUserInfo(loginData.token);
+      })
+      .then((userInfo) => {
+        setCurrentUser(userInfo);
         closeActiveModal();
+        navigate("/");
       })
       .catch(console.error);
   };
@@ -119,7 +127,6 @@ function App() {
   const onSignIn = (user) => {
     return signIn(user)
       .then((data) => {
-        console.log("User signed in successfully:", data);
         getUserInfo(data.token).then(({ name, avatar, _id }) => {
           setCurrentUser({
             name: name,
@@ -132,7 +139,7 @@ function App() {
         if (data.token) {
           setToken(data.token);
           setTimeout(() => {
-            return navigate("/profile");
+            return navigate("/");
           }, 0);
         }
       })
@@ -143,8 +150,6 @@ function App() {
     const token = getToken();
     return editUserInfo(user, token)
       .then((data) => {
-        console.log("Profile updated successfully");
-        console.log(data);
         setCurrentUser(data);
         closeActiveModal();
       })
@@ -152,7 +157,6 @@ function App() {
   };
 
   const onDeleteItem = (item) => {
-    console.log("Deleting item:", item);
     const token = getToken();
     removeItems(item, token)
       .then(() => {
@@ -167,7 +171,6 @@ function App() {
   };
 
   const handleCardLike = (_id, isLiked) => {
-    console.log({ _id, isLiked });
     const token = localStorage.getItem("jwt");
     !isLiked
       ? addCardLike(_id, token)
@@ -196,7 +199,7 @@ function App() {
         setClothingItems(data);
       })
       .catch(console.error);
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const processedData = processWeatherData(data);
         setWeatherData(processedData);
@@ -226,11 +229,7 @@ function App() {
       .then(({ name, avatar, _id }) => {
         setIsLoggedIn(true);
         setCurrentUser({ name, avatar, _id });
-        setTimeout(() => {
-          console.log(`logged in true`);
-          console.log({ name, avatar });
-        }, 0);
-        return navigate("/profile");
+        return navigate("/");
       })
       .catch(console.error);
   }, []);
@@ -243,7 +242,7 @@ function App() {
         >
           <div className="page__content">
             <Header
-              isLoggedIn={isloggedIn}
+              isLoggedIn={isLoggedIn}
               handleAddClick={handleAddClick}
               weatherData={weatherData}
               handleSignUpClick={handleSignUpClick}
@@ -254,6 +253,7 @@ function App() {
                 path="/"
                 element={
                   <Main
+                    isLoggedIn={isLoggedIn}
                     handleCardLike={handleCardLike}
                     clothes={clothingItems}
                     handleCardClick={handleCardClick}
@@ -264,8 +264,9 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute isLoggedIn={isloggedIn}>
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
+                      isLoggedIn={isLoggedIn}
                       handleCardLike={handleCardLike}
                       onCardClick={handleCardClick}
                       handleChangeProfileClick={handleChangeProfileClick}
@@ -279,7 +280,7 @@ function App() {
               <Route
                 path="*"
                 element={
-                  isloggedIn ? (
+                  isLoggedIn ? (
                     <Navigate to="/profile" replace />
                   ) : (
                     <Navigate to="/" replace />
@@ -292,6 +293,7 @@ function App() {
               onCloseModal={closeActiveModal}
               isOpen={activeModal === "add-garment"}
               onAddItem={onAddItem}
+              isLoggedIn={isLoggedIn}
             ></AddItemModal>
 
             <RegisterModal
@@ -315,7 +317,7 @@ function App() {
             <ItemModal
               activeModal={activeModal}
               card={selectedCard}
-              isOpen={activeModal === "confirm-delete"}
+              isOpen={activeModal === "preview"}
               handleCloseClick={closeActiveModal}
               handleDeleteClick={handleDeleteClick}
               onDeleteItem={onDeleteItem}

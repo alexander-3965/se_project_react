@@ -41,10 +41,10 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="RegisterPassword" className="modal__label">
+      <label htmlFor="registerPassword" className="modal__label">
         Password*
         <input
-          type="text"
+          type="password"
           className="modal__input"
           id="registerPassword"
           name="password"
