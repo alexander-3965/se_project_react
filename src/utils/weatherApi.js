@@ -18,11 +18,14 @@ export const getWeather = ({ latitude, longitude }, apiKey) => {
 };
 
 const getWeatherType = (temperature) => {
-  if (temperature > 86) {
+  const hotLowerLimit = 86;
+  const warmLowerLimit = 66;
+
+  if (temperature > hotLowerLimit) {
     return "hot";
-  } else if (temperature >= 66 && temperature < 86) {
+  } else if (temperature >= warmLowerLimit && temperature < hotLowerLimit) {
     return "warm";
   } else {
-    return "hot";
+    return "cold";
   }
 };

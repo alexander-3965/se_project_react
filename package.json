@@ -1,5 +1,6 @@
 {
   "name": "se_project_react",
+  "homepage": "https://whattoweartripleten.jumpingcrab.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +10,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "deploy": "npm run build && scp -r ./dist/* alexrochalopez@whattoweartripleten.jumpingcrab.com:/home/alexrochalopez/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",

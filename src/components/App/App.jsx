@@ -198,13 +198,13 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
-      .catch(console.error);
+      .catch((error) => console.error);
     getWeather(coordinates, apiKey)
       .then((data) => {
         const processedData = processWeatherData(data);
         setWeatherData(processedData);
       })
-      .catch(console.error);
+      .catch((error) => console.error);
   }, []);
 
   useEffect(() => {
