@@ -143,7 +143,10 @@ function App() {
           }, 0);
         }
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        throw err;
+      });
   };
 
   const onEditProfile = (user) => {
@@ -179,14 +182,14 @@ function App() {
               cards.map((item) => (item._id === _id ? updatedCard.data : item))
             );
           })
-          .catch((err) => console.log(err))
+          .catch((err) => console.error(err))
       : removeCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === _id ? updatedCard.data : item))
             );
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.error(err));
   };
 
   const closeActiveModal = () => {
@@ -198,13 +201,13 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
-      .catch((error) => console.error);
+      .catch((error) => console.error(error));
     getWeather(coordinates, apiKey)
       .then((data) => {
         const processedData = processWeatherData(data);
         setWeatherData(processedData);
       })
-      .catch((error) => console.error);
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {

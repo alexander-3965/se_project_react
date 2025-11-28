@@ -52,6 +52,10 @@
   width: 100%;
 }
 
+.modal__error {
+  color: #ff4d00;
+}
+
 .modal__radio-input {
   margin-right: 5px;
   accent-color: #000000;

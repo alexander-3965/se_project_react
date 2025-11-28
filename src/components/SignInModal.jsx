@@ -1,5 +1,6 @@
 import ModalWithForm from "./ModalWithForm/ModalWithForm";
 import { useForm } from "../Hooks/useForm";
+import { useState } from "react";
 
 const SignInModal = ({ isOpen, onSignIn, onCloseModal }) => {
   const defaultValues = {
@@ -8,14 +9,20 @@ const SignInModal = ({ isOpen, onSignIn, onCloseModal }) => {
   };
 
   const { setValues, values, handleChange } = useForm(defaultValues);
+  const [error, setError] = useState("");
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    setError("");
     onSignIn(values)
       .then(() => {
         setValues(defaultValues);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.log("handleSubmit catch block initiated");
+        console.error(err);
+        setError("Invalid email or password. Please try again.");
+      });
   }
 
   return (
@@ -51,6 +58,7 @@ const SignInModal = ({ isOpen, onSignIn, onCloseModal }) => {
           onChange={handleChange}
         />
       </label>
+      {error && <p className="modal__error">{error}</p>}
     </ModalWithForm>
   );
 };
